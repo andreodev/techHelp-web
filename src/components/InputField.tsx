@@ -1,27 +1,33 @@
 import { useFormContext } from "react-hook-form";
-import { User } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 
 interface InputFieldProps {
   name: string;
   label: string;
   type?: string;
   placeholder?: string;
+  icon?: LucideIcon;
+  colorIcon?: string
 }
 
-export default function InputField({ name, label, type = "text", placeholder }: InputFieldProps) {
+export default function InputField({ name, label, type = "text", placeholder, icon, colorIcon }: InputFieldProps) {
   const {
     register,
     formState: { errors }
   } = useFormContext();
+
+  const Icon = icon;
 
   return (
     <div className="flex flex-col gap-1 mb-8">
       <label htmlFor={name} className="font-medium text-sm text-white">{label}</label>
 
       <div className="relative">
-        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-          <User size={16} />
-        </span>
+        {Icon && (
+          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <Icon size={16} color={colorIcon} />
+          </span>
+        )}
 
         <input
           id={name}

@@ -5,6 +5,7 @@ import InputField from "../components/InputField";
 import FormWrapper from "../components/FormWrapper";
 import SelectField from "../components/SelectFIeld";
 import Button from "../components/button";
+import { User } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -33,7 +34,7 @@ export default function FormRegister() {
 
   return (
     <FormWrapper methods={methods} onSubmit={onSubmit}>
-      <InputField name="name" label="Nome" placeholder="Digite seu nome" />
+      <InputField name="name" label="Nome" placeholder="Digite seu nome" icon={User} colorIcon="black"/>
       <SelectField
         name="departamento"
         label="Departamento"
