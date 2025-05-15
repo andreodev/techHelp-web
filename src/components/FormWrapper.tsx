@@ -11,7 +11,7 @@ interface FormWrapperProps<T extends FieldValues> {
 export default function FormWrapper<T extends FieldValues>({ methods, onSubmit, children }: FormWrapperProps<T>) {
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className="max-w-md w-md p-4 rounded ">
+      <form onSubmit={methods.handleSubmit(onSubmit)} className="max-w-md w-md p-6 rounded ">
         {children}
       </form>
     </FormProvider>
