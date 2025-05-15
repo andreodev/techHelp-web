@@ -1,17 +1,12 @@
-import Container from "./components/Container"
-import Title from "./components/Title"
-import FormRegister from "./form/FormRegister"
-import Layout from "./View/RegisterView/Layout"
+import Card from "./components/Card";
+import Layout from "./View/RegisterView/Layout";
 
 function App() {
   return (
     <Layout>
-    <Container>
-      <Title text="TechHelp" />
-      <FormRegister />
-    </Container>
+      <Card title="titulo 1" description="essa é a descrição" textButton="compre"/>
     </Layout>
-  )
+  );
 }
 
-export default App
+export default App;

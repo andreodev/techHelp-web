@@ -5,7 +5,7 @@ import InputField from "../components/InputField";
 import FormWrapper from "../components/FormWrapper";
 import SelectField from "../components/SelectFIeld";
 import Button from "../components/button";
-import { Eye, EyeOff, User } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, User } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -72,6 +72,7 @@ export default function FormRegister() {
           text="Cadastrar"
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
+          icon={ArrowRight}
         />
       </div>
     </FormWrapper>
