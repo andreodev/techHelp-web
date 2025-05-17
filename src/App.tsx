@@ -1,31 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "./components/Layout";
-import RegisterView from "./View/RegisterView";
+import Modal from "./components/Modal";
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/techelp/api/user');
-        const data = await response.json();
-        setData(data); // Armazena os dados no estado
-      } catch (error) {
-        console.error("Erro ao buscar dados:", error);
-      }
-    };
-
-    fetchData(); 
-  }, []); 
-
-  if (!data) {
-    return <div>Carregando...</div>;
-  }
-
+  const [open, setOpen] = useState<boolean>(false);
+  console.log("🚀 ~ App ~ open:", open)
   return (
     <Layout>
-      <RegisterView />
+      <h2>Clique no botão pra abrir o modal</h2>
+      <button onClick={() => setOpen(!open)} className="cursor-pointer">Clique aqui</button>
+
+      <Modal isOpen={open} setOpen={setOpen} description="description" title="Titulo" />
     </Layout>
   );
 }
