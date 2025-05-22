@@ -1,16 +1,16 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import InputField from "../components/InputField";
-import FormWrapper from "../components/FormWrapper";
-import SelectField from "../components/SelectFIeld";
-import Button from "../components/button";
+import InputField from "../../components/InputField";
+import FormWrapper from "../../components/FormWrapper";
+import SelectField from "../../components/SelectFIeld";
+import Button from "../../components/button";
 import { ArrowRight, Eye, EyeOff, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { useCreateUser } from "./hooks/useCreateUser";
-import LoadingModal from "../components/LoadingModal";
-import SuccessModal from "../components/SuccessModal";
-import ErrorModal from "../components/ErrorModal";
+import LoadingModal from "../../components/LoadingModal";
+import SuccessModal from "../../components/SuccessModal";
+import ErrorModal from "../../components/ErrorModal";
 
 const formSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -25,12 +25,14 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function FormRegister() {
+
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [Loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
+  
   const { createUser } = useCreateUser();
+
   const methods = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -137,11 +139,11 @@ export default function FormRegister() {
 
         <div className="flex justify-center mt-16">
           <Button
-            text="Cadastrar"
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
-            icon={ArrowRight}
-          />
+            icon={ArrowRight}>
+              Cadastrar
+            </Button>
         </div>
       </FormWrapper>
     </>
