@@ -8,8 +8,10 @@ export default function RegisterView() {
  return(
   <div className="justify-items-center">
     <Title text="TechHelp"/>
-    <Title text="Faça Login" className="text-xl text-start p-2"/>
-    <FormRegister />
+    <div className="flex justify-center items-center p-5">
+      <FormRegister />
+
+    </div>
   </div>
  )
 }

@@ -1,10 +1,10 @@
-// src/routes/RoutesIndex.tsx
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import RegisterView from '../View/RegisterView';
 import HomeView from '../View/HomeView';
 import Layout from '../components/Layout';
 import TicketView from '../View/TicketView';
+import LoginPage from '@/View/AboutView';
 
 function RoutesIndex() {
   const location = useLocation();
@@ -24,21 +24,31 @@ function RoutesIndex() {
     transition: { duration: 0.2 },
   };
 
+  const isLoginPage = location.pathname === '/login';
+
   return (
-    <Layout pageName={pageName}>
+    <> 
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
           {...pageTransition}
         >
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HomeView />} />
-            <Route path="/register" element={<RegisterView />} />
-            <Route path="/new-ticket" element={<TicketView />} />
-          </Routes>
+          {isLoginPage ? (
+            <Routes location={location} key={location.pathname}>
+              <Route path="/login" element={<LoginPage />} /> 
+            </Routes>
+          ) : (
+            <Layout pageName={pageName}>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<HomeView />} />
+                <Route path="/register" element={<RegisterView />} />
+                <Route path="/new-ticket" element={<TicketView />} />
+              </Routes>
+            </Layout>
+          )}
         </motion.div>
       </AnimatePresence>
-    </Layout>
+    </>
   );
 }
 

@@ -14,7 +14,7 @@ export default function Button({ children, className, type = "button", icon }: B
   return (
     <button
       type={type}
-      className={`bg-blue-700 ${className} text-white text-base font-medium rounded-md w-[241px] h-[52px] flex items-center justify-center gap-2 cursor-pointer`}
+      className={` ${className} text-white text-2xl font-bold transition-transform duration-300 hover:scale-105 rounded-md flex items-center justify-center gap-2 cursor-pointer`}
     >
       {children}
       {Icon && <Icon />}

@@ -22,15 +22,15 @@ export function CardMenu({ to, icon, title, description, delay = 0, textButton }
     >
       <Link
         to={to}
-        className="block p-6 bg-white rounded-2xl border hover:shadow-md transition group h-full"
+        className="block p-6 bg-blue-500 text-white rounded-2xl border hover:shadow-md transition group h-full"
       >
         <div className="flex items-center gap-4 mb-2">
           <div className="bg-blue-100 p-3 rounded-full">{icon}</div>
-          <h2 className="text-lg font-semibold group-hover:text-blue-600 transition">
+          <h2 className="text-lg font-semibold group-hover:text-blue-200 transition">
             {title}
           </h2>
         </div>
-        <p className="text-sm text-gray-600">{description}</p>
+        <p className="text-sm ">{description}</p>
         <Button className="inline-block mt-4 text-sm text-blue-600 group-hover:underline ">
           {textButton || 'Acessar a página'}
         </Button>

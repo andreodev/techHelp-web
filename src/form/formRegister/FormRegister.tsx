@@ -140,7 +140,7 @@ export default function FormRegister() {
         <div className="flex justify-center mt-16">
           <Button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
+            className="bg-blue-500 text-black px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
             icon={ArrowRight}>
               Cadastrar
             </Button>
