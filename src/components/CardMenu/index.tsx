@@ -11,7 +11,7 @@ interface CardMenuProps {
 
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
-import Button from '../button';
+import Button from '../Button';
 
 export function CardMenu({ to, icon, title, description, delay = 0, textButton }: CardMenuProps) {
   return (

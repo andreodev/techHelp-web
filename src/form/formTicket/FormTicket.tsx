@@ -4,7 +4,7 @@ import LoadingModal from "../../components/LoadingModal";
 import SuccessModal from "../../components/SuccessModal";
 import ErrorModal from "../../components/ErrorModal";
 import FormWrapper from "../../components/FormWrapper";
-import Button from "../../components/button";
+import Button from "../../components/Button";
 import { z } from "zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -65,6 +65,8 @@ export default function FormTicket() {
         onClose={() => setError(null)}
       />
       <FormWrapper methods={methods} onSubmit={onSubmit}>
+        <div className="grid grid-cols-1 gap-10">
+
         <SelectField
           name="departamento"
           label="Departamento"
@@ -74,7 +76,7 @@ export default function FormTicket() {
             { value: "tecnico", label: "Técnico" },
             { value: "marketing", label: "Marketing" },
           ]}
-        />
+          />
 
         <SelectField
           name="TypeTicket"
@@ -85,18 +87,18 @@ export default function FormTicket() {
             { value: "tecnico", label: "Técnico" },
             { value: "marketing", label: "Marketing" },
           ]}
-        />
+          />
 
-        <TextField name="description" label="Descrição" type="text" value="" />
+        <TextField name="description" label="Descrição"  placeholder="Diga qual o seu problema..."/>
 
+          </div>
         <div className="flex justify-center mt-16">
-          <Button
-            type="submit"
-            className="bg-blue-500  px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
-            icon={ArrowRight}
-          >
-            Criar o chamado
-          </Button>
+           <Button
+                      type="submit"
+                      className="bg-blue-500 text-black rounded hover:bg-blue-700 cursor-pointer p-6 w-full flex items-center justify-center"
+                      icon={ArrowRight}>
+                        Cadastrar chamado
+                      </Button>
         </div>
       </FormWrapper>
     </>

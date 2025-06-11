@@ -6,12 +6,13 @@ interface FormWrapperProps<T extends FieldValues> {
   methods: UseFormReturn<T>
   onSubmit: (data: T) => void
   children: React.ReactNode
+  className?: string
 }
 
-export default function FormWrapper<T extends FieldValues>({ methods, onSubmit, children }: FormWrapperProps<T>) {
+export default function FormWrapper<T extends FieldValues>({ methods, onSubmit, children, className }: FormWrapperProps<T>) {
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className="max-w-md w-md p-6 rounded-lg bg-blue-600 ">
+      <form onSubmit={methods.handleSubmit(onSubmit)} className={`  ${className}`}>
         {children}
       </form>
     </FormProvider>

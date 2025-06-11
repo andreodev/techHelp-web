@@ -4,7 +4,7 @@ import * as z from "zod";
 import InputField from "../../components/InputField";
 import FormWrapper from "../../components/FormWrapper";
 import SelectField from "../../components/SelectFIeld";
-import Button from "../../components/button";
+import Button from "@/components/Button";
 import { ArrowRight, Eye, EyeOff, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { useCreateUser } from "./hooks/useCreateUser";
@@ -58,8 +58,8 @@ export default function FormRegister() {
       await new Promise((resolve) => setTimeout(resolve, 5000));
 
       if (data.email === "erro@teste.com") {
-      throw new Error("Erro simulado para teste");
-    }
+        throw new Error("Erro simulado para teste");
+      }
 
       await createUser({
         nameUser: data.name,
@@ -91,61 +91,65 @@ export default function FormRegister() {
         message={error || ""}
         onClose={() => setError(null)}
       />
-      <FormWrapper methods={methods} onSubmit={onSubmit}>
-        <InputField
-          name="name"
-          label="Nome"
-          placeholder="Digite seu nome"
-          icon={User}
-          colorIcon="black"
-        />
-        <InputField
-          name="email"
-          label="Email"
-          placeholder="Digite seu email"
-          icon={Mail}
-          colorIcon="black"
-        />
-        <SelectField
-          name="departamento"
-          label="Departamento"
-          placeholder="Selecione o departamento"
-          options={[
-            { value: "financeiro", label: "Financeiro" },
-            { value: "tecnico", label: "Técnico" },
-            { value: "marketing", label: "Marketing" },
-          ]}
-        />
-        <InputField
-          name="password"
-          label="Senha"
-          type="password"
-          placeholder="Digite sua senha"
-          icon={Eye}
-          colorIcon="black"
-        />
-        <InputField
-          name="confirmPassword"
-          label="Confirmar Senha"
-          type="password"
-          placeholder="Confirme sua senha"
-          icon={EyeOff}
-          colorIcon="black"
-        />
+      <FormWrapper methods={methods} onSubmit={onSubmit} className="bg-blue-600">
+        <div className="grid grid-cols-2 gap-10">
+          <InputField
+            name="name"
+            label="Nome"
+            placeholder="Digite seu nome"
+            icon={User}
+            colorIcon="black"
+          />
+          <InputField
+            name="email"
+            label="Email"
+            placeholder="Digite seu email"
+            icon={Mail}
+            colorIcon="black"
+          />
+          <SelectField
+            name="departamento"
+            label="Departamento"
+            placeholder="Selecione o departamento"
+            options={[
+              { value: "financeiro", label: "Financeiro" },
+              { value: "tecnico", label: "Técnico" },
+              { value: "marketing", label: "Marketing" },
+            ]}
+          />
+          <InputField
+            name="password"
+            label="Senha"
+            type="password"
+            placeholder="Digite sua senha"
+            icon={Eye}
+            colorIcon="black"
+          />
+          <InputField
+            name="confirmPassword"
+            label="Confirmar Senha"
+            type="password"
+            placeholder="Confirme sua senha"
+            icon={EyeOff}
+            colorIcon="black"
+          />
 
-        {passwordError && (
-          <div className="text-red-500 text-sm mt-2">{passwordError}</div>
-        )}
-
-        <div className="flex justify-center mt-16">
-          <Button
-            type="submit"
-            className="bg-blue-500 text-black px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
-            icon={ArrowRight}>
-              Cadastrar
-            </Button>
+          {passwordError && (
+            <div className="text-red-500 text-sm mt-2">{passwordError}</div>
+          )}
         </div>
       </FormWrapper>
+
+      {/* Botão fica embaixo do formulário, ocupando 100% da largura */}
+      <div className="w-full mt-4">
+        <Button
+          type="submit"
+          className="bg-blue-500 text-black rounded hover:bg-blue-700 cursor-pointer p-6 w-full flex items-center justify-center"
+          icon={ArrowRight}
+        >
+          Cadastrar
+        </Button>
+      </div>
     </>
   );
 }

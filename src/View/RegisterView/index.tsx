@@ -1,4 +1,3 @@
-import Title from "../../components/Title";
 import FormRegister from "../../form/formRegister/FormRegister";
 
 
@@ -6,12 +5,9 @@ import FormRegister from "../../form/formRegister/FormRegister";
 export default function RegisterView() {
 
  return(
-  <div className="justify-items-center">
-    <Title text="TechHelp"/>
-    <div className="flex justify-center items-center p-5">
+  <div className=" p-10 bg-blue-600 rounded-lg w-full">
       <FormRegister />
 
-    </div>
   </div>
  )
 }

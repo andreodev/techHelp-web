@@ -4,29 +4,30 @@ import { useFormContext } from 'react-hook-form';
 interface TextFieldProps {
   label?: string;
   placeholder?: string;
-  value: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: string;
+  value?: string;
   name: string;
+  rows?: number;
+  cols?: number;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
   label,
   placeholder,
-  type = 'text',
   name,
+  rows = 5, // Valor padrão de 5 linhas
+  cols = 30, // Valor padrão de 30 colunas
 }) => {
+  const { register, formState: { errors } } = useFormContext();
 
- const {register, formState: { errors }
-} = useFormContext()
   return (
-    <div className="flex flex-col gap-2 w-full max-w-lg">
+    <div className="flex flex-col gap-2 w-full">
       {label && <label className="font-medium text-sm text-white">{label}</label>}
-      <input
+      <textarea
         id={name}
-        type={type}
         placeholder={placeholder}
-        {...register(name)}
+        rows={rows}
+        cols={cols}
+        {...register(name)} 
         className="border border-gray-400 bg-white rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
       />
 
